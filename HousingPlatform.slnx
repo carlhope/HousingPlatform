@@ -1,2 +1,3 @@
 <Solution>
+  <Project Path="Housing.Infrastructure/Housing.Infrastructure.csproj" />
 </Solution>
