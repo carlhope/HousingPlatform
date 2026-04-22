@@ -1,6 +1,11 @@
+using MediatR;
+
 namespace Housing.Api.Features.Properties.Update;
 
-public class UpdatePropertyCommand
-{
-    
-}
+public record UpdatePropertyCommand(
+    Guid Id,
+    string Name,
+    string Address,
+    int Bedrooms,
+    decimal Rent
+) : IRequest<PropertyDto>;

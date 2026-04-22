@@ -1,3 +1,4 @@
+using Housing.Api.Features.Properties.Create;
 using Housing.Domain.Entities;
 using Housing.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
