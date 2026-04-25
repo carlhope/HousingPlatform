@@ -1,3 +1,4 @@
+using Housing.Api.Contracts.Properties;
 using Housing.Domain.Entities;
 using Housing.Infrastructure.Persistence;
 using MediatR;

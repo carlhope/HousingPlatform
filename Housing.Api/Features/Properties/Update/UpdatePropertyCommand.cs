@@ -1,3 +1,4 @@
+using Housing.Api.Contracts.Properties;
 using MediatR;
 
 namespace Housing.Api.Features.Properties.Update;
