@@ -59,6 +59,16 @@ public class Tenancy
     {
         _payments.Add(new RentPayment(Id, amount, paidOn, reference));
     }
+    public decimal GetBalance()
+    {
+        var totalCharges = _rentHistory.Sum(r => r.Amount);
+        var totalPayments = _payments.Sum(p => p.Amount);
+        return totalPayments - totalCharges;
+    }
+    
+    public decimal GetArrears() => Math.Max(0, GetBalance() * -1);
+
+
 }
 
 
