@@ -1,6 +1,4 @@
 using MediatR;
-using Housing.Infrastructure;
-using Housing.Domain;
 using Housing.Domain.Entities;
 using Housing.Infrastructure.Persistence;
 
@@ -21,7 +19,8 @@ public class CreatePropertyHandler : IRequestHandler<CreatePropertyCommand, Guid
             request.Name,
             request.Address,
             request.Bedrooms,
-            request.Rent
+            request.OwnerId,
+            request.LandlordId
         );
 
         _db.Properties.Add(property);

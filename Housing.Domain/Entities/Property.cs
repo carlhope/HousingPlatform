@@ -6,24 +6,42 @@ public class Property
     public string Name { get; private set; }
     public string Address { get; private set; }
     public int Bedrooms { get; private set; }
-    public decimal Rent { get; private set; }
 
-    private Property() { } // Required for EF Core
+    public Guid OwnerId { get; private set; }
+    public Guid LandlordId { get; private set; }
+    
+    public Guid? TenancyId { get; private set; }
 
-    public Property(string name, string address, int bedrooms, decimal rent)
+    public Owner Owner { get; private set; }
+    public Landlord Landlord { get; private set; }
+    public Tenancy? Tenancy { get; private set; }
+
+    private Property() { }
+
+    public Property(
+        string name,
+        string address,
+        int bedrooms,
+        Guid ownerId,
+        Guid landlordId)
     {
         Id = Guid.NewGuid();
         Name = name;
         Address = address;
         Bedrooms = bedrooms;
-        Rent = rent;
+        OwnerId = ownerId;
+        LandlordId = landlordId;
     }
-    public void UpdateDetails(string name, string address, int bedrooms, decimal rent)
+
+    public void UpdateDetails(
+        string name,
+        string address,
+        int bedrooms 
+        )
     {
         Name = name;
         Address = address;
         Bedrooms = bedrooms;
-        Rent = rent;
     }
-
 }
+

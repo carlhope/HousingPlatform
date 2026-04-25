@@ -1,6 +1,4 @@
 using Housing.Api.Features.Properties.Update;
-using Housing.Domain.Entities;
-using Housing.Infrastructure.Persistence;
 using MediatR;
 
 namespace Housing.Api.Features.Properties;
@@ -19,7 +17,8 @@ public static class UpdatePropertyEndpoint
                 req.Name,
                 req.Address,
                 req.Bedrooms,
-                req.Rent
+                req.OwnerId,
+                req.LandlordId
             );
 
             var result = await sender.Send(command);

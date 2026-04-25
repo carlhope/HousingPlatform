@@ -1,6 +1,4 @@
-﻿
-using Housing.Infrastructure.Data;
-using Housing.Infrastructure.Persistence;
+﻿using Housing.Infrastructure.Persistence;
 
 namespace Housing.Api.Features.Properties.Delete;
 

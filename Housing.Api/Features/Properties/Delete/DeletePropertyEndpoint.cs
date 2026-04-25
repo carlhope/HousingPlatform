@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Routing;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 
 namespace Housing.Api.Features.Properties.Delete;
 
@@ -8,8 +9,8 @@ public static class DeletePropertyEndpoint
     {
         return group.MapDelete("/{id}", async (
             Guid id,
-            DeletePropertyHandler handler,
-            DeletePropertyValidator validator) =>
+            [FromServices]DeletePropertyHandler handler,
+            [FromServices]DeletePropertyValidator validator) =>
         {
             var command = new DeletePropertyCommand(id);
 

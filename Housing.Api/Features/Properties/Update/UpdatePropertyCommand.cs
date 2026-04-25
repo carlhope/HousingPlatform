@@ -8,5 +8,6 @@ public record UpdatePropertyCommand(
     string Name,
     string Address,
     int Bedrooms,
-    decimal Rent
+    Guid OwnerId,
+    Guid LandlordId
 ) : IRequest<PropertyDto>;

@@ -27,8 +27,7 @@ public class UpdatePropertyHandler
         property.UpdateDetails(
             cmd.Name,
             cmd.Address,
-            cmd.Bedrooms,
-            cmd.Rent
+            cmd.Bedrooms
         );
 
         await _db.SaveChangesAsync(ct);
@@ -37,8 +36,7 @@ public class UpdatePropertyHandler
             property.Id,
             property.Name,
             property.Address,
-            property.Bedrooms,
-            property.Rent
+            property.Bedrooms
         );
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Routing;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 
 namespace Housing.Api.Features.Properties.Get;
 
@@ -8,8 +9,8 @@ public static class GetPropertyEndpoint
     {
         return group.MapGet("/{id}", async (
             Guid id,
-            GetPropertyHandler handler,
-            GetPropertyValidator validator) =>
+            [FromServices]GetPropertyHandler handler,
+            [FromServices]GetPropertyValidator validator) =>
         {
             var query = new GetPropertyQuery(id);
 
