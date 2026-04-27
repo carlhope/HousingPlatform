@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 
 namespace Housing.Api.Features.Properties.Get;
@@ -9,7 +10,7 @@ public static class GetPropertyEndpoint
     {
         return group.MapGet("/{id}", async (
             Guid id,
-            [FromServices]GetPropertyHandler handler,
+            [FromServices]IMediator mediator,
             [FromServices]GetPropertyValidator validator) =>
         {
             var query = new GetPropertyQuery(id);
@@ -18,7 +19,7 @@ public static class GetPropertyEndpoint
             if (!validation.IsValid)
                 return Results.ValidationProblem(validation.ToDictionary());
 
-            return await handler.Handle(query);
+            return await mediator.Send(query);
         });
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 
 namespace Housing.Api.Features.Properties.Delete;
@@ -9,7 +10,7 @@ public static class DeletePropertyEndpoint
     {
         return group.MapDelete("/{id}", async (
             Guid id,
-            [FromServices]DeletePropertyHandler handler,
+            [FromServices]IMediator mediator,
             [FromServices]DeletePropertyValidator validator) =>
         {
             var command = new DeletePropertyCommand(id);
@@ -18,7 +19,7 @@ public static class DeletePropertyEndpoint
             if (!validation.IsValid)
                 return Results.ValidationProblem(validation.ToDictionary());
 
-            return await handler.Handle(command);
+            return await mediator.Send(command);
         });
     }
 }

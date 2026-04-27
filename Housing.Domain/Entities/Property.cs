@@ -9,12 +9,15 @@ public class Property
 
     public Guid OwnerId { get; private set; }
     public Guid LandlordId { get; private set; }
-    
-    public Guid? TenancyId { get; private set; }
 
     public Owner Owner { get; private set; }
     public Landlord Landlord { get; private set; }
-    public Tenancy? Tenancy { get; private set; }
+    private readonly List<Tenancy> _tenancies = new();
+    public IReadOnlyCollection<Tenancy> Tenancies => _tenancies.AsReadOnly();
+
+    public Tenancy? CurrentTenancy =>
+        _tenancies.FirstOrDefault(t => t.EndDate == null);
+
 
     private Property() { }
 

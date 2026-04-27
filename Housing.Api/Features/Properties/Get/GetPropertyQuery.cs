@@ -1,4 +1,7 @@
-﻿namespace Housing.Api.Features.Properties.Get;
+﻿using Housing.Domain.Entities;
+using MediatR;
 
-public record GetPropertyQuery(Guid Id);
+namespace Housing.Api.Features.Properties.Get;
+
+public record GetPropertyQuery(Guid Id):IRequest<IResult>;
 

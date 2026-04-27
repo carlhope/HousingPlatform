@@ -1,6 +1,7 @@
 using Housing.Api.Contracts.Properties;
 using Housing.Domain.Entities;
 using Housing.Infrastructure.Persistence;
+using Housing.Infrastructure.Services.Interfaces;
 using MediatR;
 
 namespace Housing.Api.Features.Properties.Update;
@@ -9,10 +10,12 @@ public class UpdatePropertyHandler
     : IRequestHandler<UpdatePropertyCommand, PropertyDto>
 {
     private readonly HousingDbContext _db;
+    private readonly ICacheService _cache;
 
-    public UpdatePropertyHandler(HousingDbContext db)
+    public UpdatePropertyHandler(HousingDbContext db, ICacheService cache)
     {
         _db = db;
+        _cache = cache;
     }
 
     public async Task<PropertyDto> Handle(
@@ -31,6 +34,12 @@ public class UpdatePropertyHandler
         );
 
         await _db.SaveChangesAsync(ct);
+        
+        // Invalidate caches
+        await _cache.RemoveAsync($"property:{property.Id}");
+        await _cache.RemoveAsync("properties:all");
+        await _cache.RemoveAsync($"properties:landlord:{property.LandlordId}");
+        await _cache.RemoveAsync($"properties:owner:{property.OwnerId}");
 
         return new PropertyDto(
             property.Id,

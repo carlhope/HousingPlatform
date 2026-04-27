@@ -4,8 +4,11 @@ using Housing.Api.Features.Properties.Create;
 using Housing.Domain.Entities;
 using Housing.Infrastructure.Behaviours;
 using Housing.Infrastructure.Persistence;
+using Housing.Infrastructure.Services;
+using Housing.Infrastructure.Services.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<HousingDbContext>(options =>
@@ -15,6 +18,13 @@ builder.Services.AddDbContext<HousingDbContext>(options =>
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 var apiAssembly = typeof(Program).Assembly;
+builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
+{
+    return ConnectionMultiplexer.Connect("localhost:6379,abortConnect=false");
+
+});
+
+builder.Services.AddSingleton<ICacheService, RedisCacheService>();
 
 builder.Services.AddMediatR(cfg =>
 {

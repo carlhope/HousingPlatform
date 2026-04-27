@@ -1,4 +1,6 @@
-﻿namespace Housing.Api.Features.Properties.List;
+﻿using MediatR;
 
-public record ListPropertiesQuery;
+namespace Housing.Api.Features.Properties.List;
+
+public record ListPropertiesQuery:IRequest<IResult>;
 

@@ -7,6 +7,10 @@ public class Landlord
     public string ContactEmail { get; private set; }
     public string ContactPhone { get; private set; }
     public LandlordType Type { get; private set; }
+    private readonly List<Property> _properties = new();
+    public IReadOnlyCollection<Property> Properties => _properties.AsReadOnly();
+
+
 
     private Landlord() { }
 

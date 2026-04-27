@@ -1,4 +1,6 @@
-﻿namespace Housing.Api.Features.Properties.Delete
+﻿using MediatR;
+
+namespace Housing.Api.Features.Properties.Delete
 {
-    public record DeletePropertyCommand(Guid Id);
+    public record DeletePropertyCommand(Guid Id):IRequest<IResult>;
 }
