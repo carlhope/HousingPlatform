@@ -49,20 +49,19 @@ These features are planned but not yet implemented:
 
 This project requires the following services to be running:
 
-- **PostgreSQL** (any version supported by EF Core)
+- **PostgreSQL** (provided via Docker Compose)
 - **Redis** (for distributed caching)
 
+---
 
-### 1. Ensure PostgreSQL is running
+### 1. Start PostgreSQL (Dockerised)
 
-Update the connection string in `appsettings.json` to point to your PostgreSQL instance.
+A ready‑to‑use PostgreSQL instance is included in the repository under the `docker` directory.
 
-Example:
+From the `docker` folder:
 
-```json
-"ConnectionStrings": {
-  "DefaultConnection": "Host=localhost;Port=5432;Database=Housing;Username=postgres;Password=yourpassword"
-}
+```bash
+docker compose up -d
 ```
 
 ### 2. Ensure Redis is running
