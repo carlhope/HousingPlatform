@@ -1,8 +1,7 @@
 namespace Housing.Domain.Entities;
 
-public class Tenant
+public class Tenant: BaseEntity
 {
-    public Guid Id { get; private set; }
 
     public string FirstName { get; private set; }
     public string LastName { get; private set; }

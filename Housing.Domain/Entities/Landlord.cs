@@ -1,8 +1,7 @@
 namespace Housing.Domain.Entities;
 
-public class Landlord
+public class Landlord:BaseEntity
 {
-    public Guid Id { get; private set; }
     public string Name { get; private set; }
     public string ContactEmail { get; private set; }
     public string ContactPhone { get; private set; }

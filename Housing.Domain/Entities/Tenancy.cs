@@ -1,7 +1,6 @@
 namespace Housing.Domain.Entities;
-public class Tenancy
+public class Tenancy:BaseEntity
 {
-    public Guid Id { get; private set; }
 
     public Guid PropertyId { get; private set; }
     public Property Property { get; private set; }

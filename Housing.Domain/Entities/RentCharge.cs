@@ -1,8 +1,7 @@
 namespace Housing.Domain.Entities;
 
-public class RentCharge
+public class RentCharge: BaseEntity
 {
-    public Guid Id { get; private set; }
     public Guid TenancyId { get; private set; }
     public decimal Amount { get; private set; }
     public DateTime StartDate { get; private set; }

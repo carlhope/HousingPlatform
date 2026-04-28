@@ -1,8 +1,7 @@
 namespace Housing.Domain.Entities;
 
-public class Property
+public class Property: BaseEntity
 {
-    public Guid Id { get; private set; }
     public string Name { get; private set; }
     public string Address { get; private set; }
     public int Bedrooms { get; private set; }
@@ -46,5 +45,6 @@ public class Property
         Address = address;
         Bedrooms = bedrooms;
     }
+
 }
 

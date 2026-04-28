@@ -1,7 +1,6 @@
 namespace Housing.Domain.Entities;
-public class RentPayment
+public class RentPayment: BaseEntity
 {
-    public Guid Id { get; private set; }
     public Guid TenancyId { get; private set; }
     public decimal Amount { get; private set; }
     public DateTime PaidOn { get; private set; }

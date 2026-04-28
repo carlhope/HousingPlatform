@@ -21,7 +21,7 @@ namespace Housing.Api.Features.Properties.Delete;
             if (property is null)
                 return Results.NotFound();
 
-            _db.Properties.Remove(property);
+            property.SoftDelete();
             await _db.SaveChangesAsync(ct);
             
             // Invalidate caches
