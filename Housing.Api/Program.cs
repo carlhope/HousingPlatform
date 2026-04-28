@@ -8,6 +8,7 @@ using Housing.Infrastructure.Services;
 using Housing.Infrastructure.Services.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using RabbitMQ.Client;
 using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,6 +26,19 @@ builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
 });
 
 builder.Services.AddSingleton<ICacheService, RedisCacheService>();
+builder.Services.AddSingleton<IEventPublisher, RabbitMqEventPublisher>();
+builder.Services.AddSingleton<Task<IConnection>>(sp =>
+{
+    var factory = new ConnectionFactory
+    {
+        HostName = "localhost",
+        UserName = "guest",
+        Password = "guest"
+    };
+
+    return factory.CreateConnectionAsync();
+});
+
 
 builder.Services.AddMediatR(cfg =>
 {

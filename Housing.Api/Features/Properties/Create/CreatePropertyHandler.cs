@@ -10,11 +10,13 @@ public class CreatePropertyHandler : IRequestHandler<CreatePropertyCommand, Guid
 {
     private readonly HousingDbContext _db;
     private readonly ICacheService _cache;
+    private readonly IEventPublisher _eventPublisher;
 
-    public CreatePropertyHandler(HousingDbContext db, ICacheService cache)
+    public CreatePropertyHandler(HousingDbContext db, ICacheService cache, IEventPublisher eventPublisher)
     {
         _db = db;
         _cache = cache;
+        _eventPublisher = eventPublisher;
     }
 
     public async Task<Guid> Handle(CreatePropertyCommand request, CancellationToken ct)
@@ -29,6 +31,14 @@ public class CreatePropertyHandler : IRequestHandler<CreatePropertyCommand, Guid
 
         _db.Properties.Add(property);
         await _db.SaveChangesAsync(ct);
+        
+        //basic RabbitMQ implementation.
+        //proof of concept whilst project scope remains limited
+        await _eventPublisher.PublishAsync(new PropertyCreatedEvent(
+            Guid.NewGuid(), 
+            DateTime.UtcNow
+        ));
+
 
         await _cache.RemoveAsync("properties:all");
         await _cache.RemoveAsync($"properties:landlord:{property.LandlordId}");

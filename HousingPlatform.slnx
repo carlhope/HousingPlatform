@@ -2,4 +2,5 @@
   <Project Path="Housing.Api\Housing.Api.csproj" Type="Classic C#" />
   <Project Path="Housing.Domain\Housing.Domain.csproj" Type="Classic C#" />
   <Project Path="Housing.Infrastructure/Housing.Infrastructure.csproj" />
+  <Project Path="Housing.TestConsumer\Housing.TestConsumer.csproj" Type="Classic C#" />
 </Solution>
