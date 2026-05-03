@@ -18,6 +18,13 @@ public class Tenant: BaseEntity
         Email = email;
         Phone = phone;
     }
+    public void UpdateDetails(string firstName, string lastName, string email, string phone)
+    {
+        FirstName = firstName;
+        LastName = lastName;
+        Email = email;
+        Phone = phone;
+    }
 
     public void UpdateContactDetails(string email, string phone)
     {

@@ -1,6 +1,7 @@
 using Housing.Api.Features.Properties.Create;
 using Housing.Api.Features.Properties.Delete;
 using Housing.Api.Features.Properties.Get;
+using Housing.Api.Features.Properties.List;
 using Housing.Domain.Entities;
 using Housing.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;

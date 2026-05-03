@@ -2,7 +2,7 @@ using MediatR;
 
 namespace Housing.Api.Features.Properties.Create;
 
-public record CreatePropertyCommand(
+public sealed record CreatePropertyCommand(
     string Name,
     string Address,
     int Bedrooms,
