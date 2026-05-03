@@ -2,7 +2,7 @@ using FluentValidation;
 
 namespace Housing.Api.Features.Tenant.Create;
 
-public class CreateTenantValidator : AbstractValidator<CreateTenantCommand>
+public sealed class CreateTenantValidator : AbstractValidator<CreateTenantCommand>
 {
     public CreateTenantValidator()
     {

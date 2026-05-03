@@ -2,7 +2,7 @@
 
 namespace Housing.Api.Features.Properties.List;
 
-public class ListPropertiesValidator : AbstractValidator<ListPropertiesQuery>
+public sealed class ListPropertiesValidator : AbstractValidator<ListPropertiesQuery>
 {
     public ListPropertiesValidator()
     {

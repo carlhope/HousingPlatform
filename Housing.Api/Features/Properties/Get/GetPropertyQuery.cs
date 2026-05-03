@@ -3,5 +3,5 @@ using MediatR;
 
 namespace Housing.Api.Features.Properties.Get;
 
-public record GetPropertyQuery(Guid Id):IRequest<IResult>;
+public sealed record GetPropertyQuery(Guid Id):IRequest<IResult>;
 

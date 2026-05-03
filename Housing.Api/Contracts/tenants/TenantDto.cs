@@ -1,6 +1,6 @@
 namespace Housing.Api.Contracts.tenants;
 
-public record TenantDto(
+public sealed record TenantDto(
     Guid Id,
     string FirstName,
     string LastName,

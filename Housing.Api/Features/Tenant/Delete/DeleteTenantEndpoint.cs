@@ -5,7 +5,7 @@ namespace Housing.Api.Features.Tenant.Delete;
 
 public static class DeleteTenantEndpoint
 {
-    public static RouteHandlerBuilder MapTenantProperty(this IEndpointRouteBuilder group)
+    public static RouteHandlerBuilder MapDeleteTenant(this IEndpointRouteBuilder group)
     {
         return group.MapDelete("/{id}", async (
             Guid id,

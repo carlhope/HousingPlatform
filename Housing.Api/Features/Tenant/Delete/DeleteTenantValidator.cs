@@ -2,7 +2,7 @@ using FluentValidation;
 
 namespace Housing.Api.Features.Tenant.Delete;
 
-public class DeleteTenantValidator : AbstractValidator<DeleteTenantCommand>
+public sealed class DeleteTenantValidator : AbstractValidator<DeleteTenantCommand>
 {
     public DeleteTenantValidator()
     {

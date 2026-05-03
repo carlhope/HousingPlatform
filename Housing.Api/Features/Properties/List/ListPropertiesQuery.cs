@@ -2,5 +2,5 @@
 
 namespace Housing.Api.Features.Properties.List;
 
-public record ListPropertiesQuery:IRequest<IResult>;
+public sealed record ListPropertiesQuery:IRequest<IResult>;
 

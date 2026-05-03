@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Housing.Api.Features.Tenant.Update;
 
-public record UpdateTenantCommand(
+public sealed record UpdateTenantCommand(
     Guid Id,
     string FirstName,
     string LastName,

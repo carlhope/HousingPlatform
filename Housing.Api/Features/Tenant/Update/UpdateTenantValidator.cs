@@ -2,7 +2,7 @@ using FluentValidation;
 
 namespace Housing.Api.Features.Tenant.Update;
 
-public class UpdatePropertyValidator : AbstractValidator<UpdateTenantCommand>
+public sealed class UpdatePropertyValidator : AbstractValidator<UpdateTenantCommand>
 {
     public UpdatePropertyValidator()
     {

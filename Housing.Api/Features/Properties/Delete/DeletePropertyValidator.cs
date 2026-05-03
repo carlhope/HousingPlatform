@@ -2,7 +2,7 @@
 
 namespace Housing.Api.Features.Properties.Delete
 {
-    public class DeletePropertyValidator : AbstractValidator<DeletePropertyCommand>
+    public sealed class DeletePropertyValidator : AbstractValidator<DeletePropertyCommand>
     {
         public DeletePropertyValidator()
         {

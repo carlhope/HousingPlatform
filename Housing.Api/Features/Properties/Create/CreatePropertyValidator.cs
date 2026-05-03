@@ -2,7 +2,7 @@ using FluentValidation;
 
 namespace Housing.Api.Features.Properties.Create;
 
-public class CreatePropertyValidator : AbstractValidator<CreatePropertyCommand>
+public sealed class CreatePropertyValidator : AbstractValidator<CreatePropertyCommand>
 {
     public CreatePropertyValidator()
     {
