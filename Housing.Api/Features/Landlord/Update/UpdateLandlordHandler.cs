@@ -31,7 +31,8 @@ public class UpdateLandlordHandler
             cmd.Name,
             cmd.ContactEmail,
             cmd.ContactPhone,
-            LandlordTypeMapping.ToDomain(cmd.LandordType)
+            cmd.LandordType.ToDomain()
+
         );
 
         await _db.SaveChangesAsync(ct);

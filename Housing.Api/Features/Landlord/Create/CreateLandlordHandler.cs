@@ -24,7 +24,8 @@ public class CreateLandlordHandler: IRequestHandler<CreateLandlordCommand, Guid>
             request.Name,
             request.Email,
             request.Phone,
-            LandlordTypeMapping.ToDomain(request.LandlordType)
+            request.LandlordType.ToDomain()
+
         
         );
 
