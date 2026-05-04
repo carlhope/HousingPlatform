@@ -1,10 +1,23 @@
+using MediatR;
+
 namespace Housing.Api.Features.Owner.List;
 
 public static class ListOwnerEndpoint
 {
-    public static IEndpointRouteBuilder MapListOwner(this IEndpointRouteBuilder group)
+ 
+    public static RouteHandlerBuilder MapListOwner(this IEndpointRouteBuilder group)
     {
+        return group.MapGet("/", async (
+            IMediator mediator,
+            ListOwnerValidator validator) =>
+        {
+            var query = new ListOwnerQuery();
 
-        throw new NotImplementedException();
+            var validation = await validator.ValidateAsync(query);
+            if (!validation.IsValid)
+                return Results.ValidationProblem(validation.ToDictionary());
+
+            return await mediator.Send(query);
+        });
     }
 }

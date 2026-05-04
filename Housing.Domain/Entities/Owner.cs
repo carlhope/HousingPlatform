@@ -19,4 +19,14 @@ public class Owner: BaseEntity
         ContactEmail = email;
         ContactPhone = phone;
     }
+    public void UpdateDetails(
+        string name,
+        string email,
+        string phone
+    )
+    {
+        Name = name;
+        ContactEmail = email;
+        ContactPhone = phone;
+    }
 }

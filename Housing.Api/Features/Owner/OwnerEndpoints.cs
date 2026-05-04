@@ -10,7 +10,7 @@ public static class OwnerEndpoints
 {
     public static void MapOwnerEndpoints(this IEndpointRouteBuilder routes)
     {
-        var group = routes.MapGroup("/landlords");
+        var group = routes.MapGroup("/owners");
 
         group.MapListOwner();
         group.MapGetOwner();

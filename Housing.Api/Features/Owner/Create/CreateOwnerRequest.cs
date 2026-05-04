@@ -1,3 +1,6 @@
 namespace Housing.Api.Features.Owner.Create;
 
-public record CreateOwnerRequest();
+public record CreateOwnerRequest(
+    string Name,
+    string Email,
+    string Phone);

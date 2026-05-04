@@ -1,3 +1,5 @@
+using MediatR;
+
 namespace Housing.Api.Features.Owner.List;
 
-public record ListOwnerQuery();
+public sealed record ListOwnerQuery:IRequest<IResult>;
