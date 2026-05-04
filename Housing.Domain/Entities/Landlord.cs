@@ -21,6 +21,18 @@ public class Landlord:BaseEntity
         ContactPhone = phone;
         Type = type;
     }
+    public void UpdateDetails(
+        string name,
+        string email,
+        string phone,
+        LandlordType type
+    )
+    {
+        Name = name;
+        ContactEmail = email;
+        ContactPhone = phone;
+        Type = type;
+    }
 }
 
 public enum LandlordType

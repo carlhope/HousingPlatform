@@ -1,3 +1,5 @@
+using MediatR;
+
 namespace Housing.Api.Features.Landlord.Get;
 
-public record GetLandlordQuery();
+public sealed record GetLandlordQuery(Guid Id):IRequest<IResult>;

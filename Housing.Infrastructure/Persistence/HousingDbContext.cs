@@ -13,6 +13,8 @@ public class HousingDbContext : DbContext
 
     public DbSet<Property> Properties => Set<Property>();
     public DbSet<Tenant> Tenants => Set<Tenant>();
+    public DbSet<Landlord> Landlords => Set<Landlord>();
+    public DbSet<Owner> Owners => Set<Owner>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -12,7 +12,7 @@ public static class LandlordEndpoints
     {
         var group = routes.MapGroup("/landlords");
 
-        group.MapListLandlord();
+        group.MapListLandlords();
         group.MapGetLandlord();
         group.MapCreateLandlord();
         group.MapUpdateLandlord();

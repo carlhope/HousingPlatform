@@ -1,3 +1,11 @@
+using FluentValidation;
+
 namespace Housing.Api.Features.Landlord.Get;
 
-public record GetLandlordValidator();
+public class GetLandlordValidator : AbstractValidator<GetLandlordQuery>
+{
+    GetLandlordValidator()
+    {
+        RuleFor(x => x.Id).NotEmpty();
+    }
+}
