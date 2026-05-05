@@ -36,13 +36,12 @@ public class Tenancy:BaseEntity
         }
     }
 
-    public void AddTenant(Tenant tenant)
-    {
-        _tenants.Add(tenant);
-    }
-
     public void End(DateTime endDate)
     {
+        if (EndDate is not null)
+            throw new Exception("Tenancy already ended");
+
+        if (endDate < StartDate) throw new ArgumentException("Tenancy end date cannot be before start date");
         EndDate = endDate;
     }
     public void AddRentCharge(decimal amount, DateTime startDate)
