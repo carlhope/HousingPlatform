@@ -4,5 +4,6 @@ public sealed record RentChargeDto(
     
     decimal Amount,
     DateTime StartDate,
-    DateTime? EndDate
+    DateTime? EndDate,
+    string Reason
 );

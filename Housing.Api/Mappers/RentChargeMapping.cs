@@ -9,7 +9,8 @@ public static class RentChargeMapping
         => new(
             charge.Amount,
             charge.StartDate,
-            charge.EndDate
+            charge.EndDate,
+            charge.Reason
         );
     
 

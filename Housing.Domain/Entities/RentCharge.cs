@@ -6,15 +6,17 @@ public class RentCharge: BaseEntity
     public decimal Amount { get; private set; }
     public DateTime StartDate { get; private set; }
     public DateTime? EndDate { get; private set; }
+    public string Reason { get; private set; }
 
     private RentCharge() { }
 
-    public RentCharge(Guid tenancyId, decimal amount, DateTime startDate)
+ 
+    public RentCharge(Guid tenancyId, decimal amount, DateTime startDate, string reason)
     {
-        Id = Guid.NewGuid();
         TenancyId = tenancyId;
         Amount = amount;
         StartDate = startDate;
+        Reason = reason;
     }
 
     public void End(DateTime endDate)

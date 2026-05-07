@@ -16,6 +16,8 @@ public class HousingDbContext : DbContext
     public DbSet<Landlord> Landlords => Set<Landlord>();
     public DbSet<Owner> Owners => Set<Owner>();
     public DbSet<Tenancy> Tenancies => Set<Tenancy>();
+    public DbSet<RentCharge> RentCharges => Set<RentCharge>();
+    public DbSet<RentPayment> RentPayments => Set<RentPayment>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

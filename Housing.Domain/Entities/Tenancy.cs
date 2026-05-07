@@ -44,14 +44,14 @@ public class Tenancy:BaseEntity
         if (endDate < StartDate) throw new ArgumentException("Tenancy end date cannot be before start date");
         EndDate = endDate;
     }
-    public void AddRentCharge(decimal amount, DateTime startDate)
+    public void AddRentCharge(decimal amount, DateTime startDate, string reason)
     {
         // End the previous rent charge if it exists
         var current = _rentHistory.LastOrDefault(r => r.EndDate == null);
         if (current != null)
             current.End(startDate.AddDays(-1));
 
-        _rentHistory.Add(new RentCharge(Id, amount, startDate));
+        _rentHistory.Add(new RentCharge(Id, amount, startDate, reason));
     }
     public void AddPayment(decimal amount, DateTime paidOn, string? reference = null)
     {
