@@ -1,6 +1,7 @@
 using Housing.Api.Features.Tenancy.Create;
 using Housing.Api.Features.Tenancy.Get;
 using Housing.Api.Features.Tenancy.List;
+using Housing.Api.Features.Tenancy.Rent.GetBalance;
 using Housing.Api.Features.Tenancy.Rent.RentCharge;
 using Housing.Api.Features.Tenancy.Rent.RentPayment;
 using Housing.Api.Features.Tenancy.Terminate;
@@ -17,8 +18,10 @@ public static class TenancyEndpoints
         group.MapGetTenancy();
         group.MapCreateTenancy();
         group.MapTerminateTenancy();
+
         
         //nested endpoints
+        group.MapGetBalance();
         group.MapRentChargeEndpoints();
         group.MapRentPaymentEndpoints();
     }
