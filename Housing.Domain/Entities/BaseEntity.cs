@@ -7,6 +7,12 @@ public abstract class BaseEntity
     public DateTime? UpdatedAt { get; private set; } 
     public bool IsDeleted { get; private set; }
     public DateTime? DeletedAt { get; private set; }
+
+    protected BaseEntity()
+    {
+        Id = Guid.NewGuid();
+        CreatedAt = DateTime.UtcNow;
+    }
     
     public void SoftDelete()
     {

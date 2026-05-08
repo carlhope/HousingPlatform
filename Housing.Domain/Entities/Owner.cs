@@ -14,7 +14,6 @@ public class Owner: BaseEntity
 
     public Owner(string name, string email, string phone)
     {
-        Id = Guid.NewGuid();
         Name = name;
         ContactEmail = email;
         ContactPhone = phone;

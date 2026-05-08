@@ -8,12 +8,11 @@ public class RentPayment: BaseEntity
 
     private RentPayment() { }
 
-    public RentPayment(Guid tenancyId, decimal amount, DateTime paidOn, string? reference = null)
+    public RentPayment(Guid tenancyId, decimal amount, string? reference = null)
     {
-        Id = Guid.NewGuid();
         TenancyId = tenancyId;
         Amount = amount;
-        PaidOn = paidOn;
+        PaidOn = DateTime.UtcNow;
         Reference = reference;
     }
 }

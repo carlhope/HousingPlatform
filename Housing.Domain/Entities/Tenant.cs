@@ -12,7 +12,6 @@ public class Tenant: BaseEntity
 
     public Tenant(string firstName, string lastName, string email, string phone)
     {
-        Id = Guid.NewGuid();
         FirstName = firstName;
         LastName = lastName;
         Email = email;

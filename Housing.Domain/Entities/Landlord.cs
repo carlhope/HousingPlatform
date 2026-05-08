@@ -15,7 +15,6 @@ public class Landlord:BaseEntity
 
     public Landlord(string name, string email, string phone, LandlordType type)
     {
-        Id = Guid.NewGuid();
         Name = name;
         ContactEmail = email;
         ContactPhone = phone;

@@ -25,7 +25,6 @@ public class Tenancy:BaseEntity
 
     public Tenancy(Guid propertyId, Guid landlordId, DateTime startDate, IEnumerable<Tenant> tenants)
     {
-        Id = Guid.NewGuid();
         PropertyId = propertyId;
         LandlordId = landlordId;
         StartDate = startDate;
@@ -53,9 +52,9 @@ public class Tenancy:BaseEntity
 
         _rentHistory.Add(new RentCharge(Id, amount, startDate, reason));
     }
-    public void AddPayment(decimal amount, DateTime paidOn, string? reference = null)
+    public void AddRentPayment(decimal amount, string? reference = null)
     {
-        _payments.Add(new RentPayment(Id, amount, paidOn, reference));
+        _payments.Add(new RentPayment(Id, amount, reference));
     }
     public decimal GetBalance()
     {

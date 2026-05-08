@@ -6,7 +6,7 @@ public static class CreateRentChargeEndpoint
 {
     public static IEndpointRouteBuilder MapCreateRentCharge(this IEndpointRouteBuilder group)
     {
-        group.MapPost("/{tenancyId:guid}", async (
+        group.MapPost("/", async (
             Guid tenancyId,
             CreateRentChargeRequest req,
             IMediator mediator) =>

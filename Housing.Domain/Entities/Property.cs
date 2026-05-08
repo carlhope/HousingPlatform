@@ -27,7 +27,6 @@ public class Property: BaseEntity
         Guid ownerId,
         Guid landlordId)
     {
-        Id = Guid.NewGuid();
         Name = name;
         Address = address;
         Bedrooms = bedrooms;

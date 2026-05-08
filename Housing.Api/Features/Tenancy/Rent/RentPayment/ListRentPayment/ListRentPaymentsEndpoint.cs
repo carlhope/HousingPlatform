@@ -1,18 +1,18 @@
 using MediatR;
 
-namespace Housing.Api.Features.Tenancy.Rent.RentCharge.ListRentCharges;
+namespace Housing.Api.Features.Tenancy.Rent.RentPayment.ListRentPayment;
 
-public static class ListRentChargesEndpoint
+public static class ListRentPaymentsEndpoint
 {
  
-    public static RouteHandlerBuilder MapListRentCharges(this IEndpointRouteBuilder group)
+    public static RouteHandlerBuilder MapListRentPayments(this IEndpointRouteBuilder group)
     {
         return group.MapGet("/", async (
             Guid tenancyId,
             IMediator mediator,
-            ListRentChargesValidator validator) =>
+            ListRentPaymentsValidator validator) =>
         {
-            var query = new ListRentChargesQuery(tenancyId);
+            var query = new ListRentPaymentsQuery(tenancyId);
 
             var validation = await validator.ValidateAsync(query);
             if (!validation.IsValid)
