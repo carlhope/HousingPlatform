@@ -37,9 +37,12 @@ public class GetBalanceHandler :IRequestHandler<GetBalanceQuery, IResult>
             .Where(x => x.TenancyId == query.Id)
             .SumAsync(x => (decimal?)x.Amount);
 
-        var charges = await chargesTask ?? 0m;
-        var payments = await paymentsTask ?? 0m;
+        await Task.WhenAll(chargesTask, paymentsTask);
 
+        var charges = chargesTask.Result ?? 0m;
+        var payments = paymentsTask.Result ?? 0m;
+
+        
         var balanceDto = new TenancyBalanceDto(payments - charges);
 
         
