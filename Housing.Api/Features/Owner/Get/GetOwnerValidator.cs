@@ -4,7 +4,7 @@ namespace Housing.Api.Features.Owner.Get;
 
 public class GetOwnerValidator : AbstractValidator<GetOwnerQuery>
 {
-    GetOwnerValidator()
+    public GetOwnerValidator()
     {
         RuleFor(x => x.Id).NotEmpty();
     }

@@ -4,7 +4,7 @@ namespace Housing.Api.Features.Tenancy.Get;
 
 public class GetTenancyValidator : AbstractValidator<GetTenancyQuery>
 {
-    GetTenancyValidator()
+    public GetTenancyValidator()
     {
         RuleFor(x => x.Id).NotEmpty();
     }
