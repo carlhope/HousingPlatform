@@ -11,4 +11,9 @@
       <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.RabbitMQ" Version="2.1.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Housing.Contracts\Housing.Contracts.csproj" />
+      <ProjectReference Include="..\Housing.Infrastructure\Housing.Infrastructure.csproj" />
+    </ItemGroup>
+
 </Project>

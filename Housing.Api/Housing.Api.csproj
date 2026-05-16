@@ -17,6 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Housing.Contracts\Housing.Contracts.csproj" />
       <ProjectReference Include="..\Housing.Infrastructure\Housing.Infrastructure.csproj" />
     </ItemGroup>
 

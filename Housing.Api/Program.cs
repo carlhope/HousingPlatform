@@ -19,13 +19,7 @@ builder.Services.AddDbContext<HousingDbContext>(options =>
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 var apiAssembly = typeof(Program).Assembly;
-builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
-{
-    return ConnectionMultiplexer.Connect("localhost:6379,abortConnect=false");
-
-});
-
-builder.Services.AddSingleton<ICacheService, RedisCacheService>();
+builder.Services.AddRedisCaching(builder.Configuration["Redis:ConnectionString"]??throw new InvalidOperationException());
 builder.Services.AddSingleton<IEventPublisher, RabbitMqEventPublisher>();
 builder.Services.AddSingleton<Task<IConnection>>(sp =>
 {

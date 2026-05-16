@@ -1,4 +1,3 @@
-using Housing.Api.Contracts.Landlords;
 using Housing.Api.Contracts.Tenancies;
 using Housing.Api.Mappers;
 using Housing.Infrastructure.Persistence;

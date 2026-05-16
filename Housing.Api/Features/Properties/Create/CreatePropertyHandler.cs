@@ -1,7 +1,7 @@
+using Housing.Contracts.Events.Properties;
 using MediatR;
 using Housing.Domain.Entities;
 using Housing.Infrastructure.Persistence;
-using Housing.Infrastructure.Services;
 using Housing.Infrastructure.Services.Interfaces;
 
 namespace Housing.Api.Features.Properties.Create;
@@ -35,8 +35,10 @@ public class CreatePropertyHandler : IRequestHandler<CreatePropertyCommand, Guid
         //basic RabbitMQ implementation.
         //proof of concept whilst project scope remains limited
         await _eventPublisher.PublishAsync(new PropertyCreatedEvent(
-            Guid.NewGuid(), 
-            DateTime.UtcNow
+            property.Id,
+            property.LandlordId,
+            property.OwnerId,
+            property.CreatedAt
         ));
 
 
