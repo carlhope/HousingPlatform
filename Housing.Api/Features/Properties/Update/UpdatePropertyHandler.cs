@@ -1,4 +1,5 @@
 using Housing.Api.Contracts.Properties;
+using Housing.Contracts.Events.Properties;
 using Housing.Infrastructure.Persistence;
 using Housing.Infrastructure.Services.Interfaces;
 using MediatR;
@@ -10,11 +11,13 @@ public class UpdatePropertyHandler
 {
     private readonly HousingDbContext _db;
     private readonly ICacheService _cache;
+    private readonly IEventPublisher _eventPublisher;
 
-    public UpdatePropertyHandler(HousingDbContext db, ICacheService cache)
+    public UpdatePropertyHandler(HousingDbContext db, ICacheService cache, IEventPublisher eventPublisher)
     {
         _db = db;
         _cache = cache;
+        _eventPublisher = eventPublisher;
     }
 
     public async Task<PropertyDto> Handle(
@@ -34,11 +37,13 @@ public class UpdatePropertyHandler
 
         await _db.SaveChangesAsync(ct);
         
-        // Invalidate caches
-        await _cache.RemoveAsync($"property:{property.Id}");
-        await _cache.RemoveAsync("properties:all");
-        await _cache.RemoveAsync($"properties:landlord:{property.LandlordId}");
-        await _cache.RemoveAsync($"properties:owner:{property.OwnerId}");
+        //basic RabbitMQ implementation.
+        //proof of concept whilst project scope remains limited
+        await _eventPublisher.PublishAsync(new PropertyUpdatedEvent(
+            property.Id,
+            property.LandlordId,
+            property.OwnerId
+        ));
 
         return new PropertyDto(
             property.Id,
