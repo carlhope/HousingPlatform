@@ -1,47 +1,62 @@
 # 🏗️ Housing Platform API (Work in Progress)
 
-A small but modern backend demonstrating clean architecture, vertical slice design, distributed caching, and containerised infrastructure.  
+A small but modern backend demonstrating clean architecture, vertical slice design, domain‑driven modelling, distributed caching, and event‑driven messaging.
 The domain is intentionally simple — the focus is on showcasing engineering patterns rather than building a full product.
 
 ---
 
 ## 🚀 Tech Stack
 
-- **.NET 10 Minimal APIs**
+- **.NET 10** - Minimal APIs
 - **Vertical Slice Architecture** (MediatR + feature folders)
+- **DDD-inspired domain modelling**
 - **PostgreSQL** (EF Core)
-- **Redis** (distributed caching)
-- **Docker** (Postgres database)
+- **Redis** - distributed caching
+- **RabbitMQ** - event-driven messaging
+- **Azure Functions** - async processing of published events
+- **Docker Compose** (Postgres database, RabbitMQ, Redis)
 - **FluentValidation**
 
 ---
 
 ## 📦 Current Features
 
-- Property CRUD (Create, Read, Update, Delete)
-- Redis-backed caching
-- Clean vertical slice structure
-- Dockerised infrastructure (API + PostgreSQL + Redis)
-- Basic domain modelling
-- - **Early rent domain modelling**  
-  - Rent is represented as a **temporal history** of charges and payments  
-  - Tenancy balance is calculated from `RentCharges` and `RentPayments`  
-  - No endpoints yet — domain logic only, demonstrating DDD-style modelling
+**API & Application Layer**
+- CRUD endpoints (Create, Read, Update, Delete)
+- Clean vertical slice structure (commands, queries, validators)
+- Minimal API endpoints with clear separation of concerns
+
+**Domain Layer**
+- Rent represented as a temporal history of charges and payments
+- Tenancy balance derived from domain rules
+- Domain events prepared for future event‑driven workflows
+
+**Infrastructure**
+- PostgreSQL via EF Core
+- Redis‑backed caching
+- RabbitMQ integration (publisher + test consumer)
+- Azure Function that reacts to published events
+- Dockerised infrastructure (API + PostgreSQL + Redis + RabbitMQ)
 
 ---
+
+## 🔄 Event‑Driven Workflow
+The system includes a simple but real asynchronous flow:
+
+- **API publishes** a PropertyCreatedEvent
+- **RabbitMQ routes the event**
+- **Azure Function** processes the event and performs downstream logic
+
+This demonstrates a decoupled, production‑style event pipeline.
 
 ## 🧭 Roadmap (Upcoming)
 
 These features are planned but not yet implemented:
 
-- Event‑driven architecture using **RabbitMQ**
-  - Cache invalidation worker
-  - Domain event publishing
-- Tenancy lifecycle modelling
 - Authentication & role-based access
-- Additional domain entities (Landlords, Owners, Tenancies)
 - Improved caching strategy (tag-based or event-driven)
 - Expanded logging & observability
+- More event-driven workflows
 
 ---
 
@@ -51,30 +66,20 @@ This project requires the following services to be running:
 
 - **PostgreSQL** (provided via Docker Compose)
 - **Redis** (for distributed caching)
+- **RabbitMQ** (for messaging queues)
 
 ---
 
 ### 1. Start PostgreSQL (Dockerised)
 
-A ready‑to‑use PostgreSQL instance is included in the repository under the `docker` directory.
+A ready‑to‑use Docker container is included in the repository under the `docker` directory.
 
 From the `docker` folder:
 
 ```bash
 docker compose up -d
 ```
-
-### 2. Ensure Redis is running
-
-The API expects a Redis instance reachable at the connection string defined in configuration.
-
-Example:
-
-```json
-"Redis": {
-  "ConnectionString": "localhost:6379"
-}
-```
+Ensure docker container is running.
 
 ### 3. Run the API
 
@@ -100,7 +105,7 @@ This repository is designed as a **technical showcase**, focusing on:
 - Clean, maintainable backend architecture  
 - Integration of multiple infrastructure components  
 - Practical use of Redis caching  
-- Event-driven patterns (planned)  
+- Event-driven patterns 
 - Demonstrating backend engineering beyond CRUD  
 
 The domain will grow gradually, but the emphasis is on architectural clarity and real-world patterns.
