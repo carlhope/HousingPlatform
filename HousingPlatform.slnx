@@ -4,5 +4,4 @@
   <Project Path="Housing.Domain\Housing.Domain.csproj" />
   <Project Path="Housing.Functions/Housing.Functions.csproj" />
   <Project Path="Housing.Infrastructure/Housing.Infrastructure.csproj" />
-  <Project Path="Housing.TestConsumer\Housing.TestConsumer.csproj" />
 </Solution>
