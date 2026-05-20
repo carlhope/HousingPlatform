@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "Housing.Functions2": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7236",
+      "launchBrowser": false
+    }
+  }
+}

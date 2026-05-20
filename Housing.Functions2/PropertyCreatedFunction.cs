@@ -7,7 +7,7 @@ using Housing.Infrastructure.Services.Interfaces;
 using Microsoft.Extensions.Configuration;
 
 
-namespace Housing.Functions;
+namespace Housing.Functions2;
 
 public class PropertyCreatedFunction
 {
@@ -23,23 +23,22 @@ public class PropertyCreatedFunction
     [Function("PropertyCreatedFunction")]
     public async Task RunAsync(
         [RabbitMQTrigger("PropertyCreatedEvent", ConnectionStringSetting = "RabbitMqConnection")]
-        byte[] body)
+        string data, FunctionContext context)
     {
-        var json = Encoding.UTF8.GetString(body);
 
         PropertyCreatedEvent? evt;
         try
         {
-            evt = JsonSerializer.Deserialize<PropertyCreatedEvent>(json);
+            evt = JsonSerializer.Deserialize<PropertyCreatedEvent>(data);
             if (evt is null)
             {
-                _logger.LogError("Failed to deserialize PropertyCreatedEvent. Raw: {Json}", json);
+                //_logger.LogError("Failed to deserialize PropertyCreatedEvent. Raw: {body}", body);
                 return;
             }
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Invalid JSON for PropertyCreatedEvent. Raw: {Json}", json);
+            // _logger.LogError(ex, "Invalid JSON for PropertyCreatedEvent. Raw: {body}", body);
             return;
         }
 

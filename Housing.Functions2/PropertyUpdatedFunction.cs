@@ -5,7 +5,7 @@ using System.Text.Json;
 using Housing.Contracts.Events.Properties;
 using Housing.Infrastructure.Services.Interfaces;
 
-namespace Housing.Functions;
+namespace Housing.Functions2;
 
 public class PropertyUpdatedFunction
 {
@@ -23,23 +23,22 @@ public class PropertyUpdatedFunction
     [Function("PropertyUpdatedFunction")]
     public async Task RunAsync(
         [RabbitMQTrigger("PropertyUpdatedEvent", ConnectionStringSetting = "RabbitMqConnection")]
-        byte[] body)
+        string data, FunctionContext context)
     {
-        var json = Encoding.UTF8.GetString(body);
 
         PropertyUpdatedEvent? evt;
         try
         {
-            evt = JsonSerializer.Deserialize<PropertyUpdatedEvent>(json);
+            evt = JsonSerializer.Deserialize<PropertyUpdatedEvent>(data);
             if (evt is null)
             {
-                _logger.LogError("Failed to deserialize PropertyUpdatedEvent. Raw: {Json}", json);
+                //_logger.LogError("Failed to deserialize PropertyUpdatedEvent. Raw: {body}", body);
                 return;
             }
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Invalid JSON for PropertyUpdatedEvent. Raw: {Json}", json);
+            //_logger.LogError(ex, "Invalid JSON for PropertyUpdatedEvent. Raw: {body}", body);
             return;
         }
 

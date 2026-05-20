@@ -2,6 +2,6 @@
   <Project Path="Housing.Api\Housing.Api.csproj" />
   <Project Path="Housing.Contracts/Housing.Contracts.csproj" />
   <Project Path="Housing.Domain\Housing.Domain.csproj" />
-  <Project Path="Housing.Functions/Housing.Functions.csproj" />
+  <Project Path="Housing.Functions2/Housing.Functions2.csproj" Id="d56ad2b9-a620-4c4b-9fa4-3c325600a00a" />
   <Project Path="Housing.Infrastructure/Housing.Infrastructure.csproj" />
 </Solution>
