@@ -7,7 +7,7 @@ using Housing.Infrastructure.Services.Interfaces;
 using Microsoft.Extensions.Configuration;
 
 
-namespace Housing.Functions2;
+namespace Housing.Functions;
 
 public class PropertyCreatedFunction
 {
@@ -32,13 +32,13 @@ public class PropertyCreatedFunction
             evt = JsonSerializer.Deserialize<PropertyCreatedEvent>(data);
             if (evt is null)
             {
-                //_logger.LogError("Failed to deserialize PropertyCreatedEvent. Raw: {body}", body);
+                _logger.LogError("Failed to deserialize PropertyCreatedEvent. Raw: {data}", data);
                 return;
             }
         }
         catch (Exception ex)
         {
-            // _logger.LogError(ex, "Invalid JSON for PropertyCreatedEvent. Raw: {body}", body);
+            _logger.LogError(ex, "Invalid JSON for PropertyCreatedEvent. Raw: {data}", data);
             return;
         }
 

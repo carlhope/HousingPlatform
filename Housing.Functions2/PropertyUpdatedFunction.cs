@@ -5,7 +5,7 @@ using System.Text.Json;
 using Housing.Contracts.Events.Properties;
 using Housing.Infrastructure.Services.Interfaces;
 
-namespace Housing.Functions2;
+namespace Housing.Functions;
 
 public class PropertyUpdatedFunction
 {
